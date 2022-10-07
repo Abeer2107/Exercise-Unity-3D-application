@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5410465570656867179}
   - component: {fileID: 7213620988701795646}
   - component: {fileID: 6051202161865558143}
-  - component: {fileID: 7213620988701795645}
+  - component: {fileID: 7877710654962642049}
   - component: {fileID: 6180165618346333618}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tire_Plastic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,8 +85,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &7213620988701795645
-SphereCollider:
+--- !u!64 &7877710654962642049
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -95,9 +95,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.1574829
-  m_Center: {x: 0, y: -0.64300627, z: 0.06337215}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2388486278102639845, guid: 8d8126090957dae40a910857e19ffa9f, type: 3}
 --- !u!114 &6180165618346333618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +112,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Plastic Tire
+  isBasePart: 0

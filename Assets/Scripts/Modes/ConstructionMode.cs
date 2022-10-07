@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class ConstructionMode : Mode
 {
-    [SerializeField] private LayerMask pickablesLayerMask;
     [SerializeField][Min(0)] private float maxConnectionDistance = 1;
     [Header("Dragging Limits")]
     [SerializeField] private float minDragLimitX = -15;
@@ -12,27 +11,27 @@ public class ConstructionMode : Mode
 
     private Ray ray;
     private RaycastHit hit;
-    private GameObject pickedObj;
+    private Part pickedPart;
     private Vector3 pickedObjScreenPos, dragPos;
 
     private void OnDrawGizmos()
     {
-        if (pickedObj)
-            Gizmos.DrawWireSphere(pickedObj.transform.position, maxConnectionDistance);
+        if (pickedPart)
+            Gizmos.DrawWireSphere(pickedPart.transform.position, maxConnectionDistance);
     }
 
     protected override void OnClickDown()
     {
         base.OnClickDown();
 
-        ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        ray = cam.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, Mathf.Infinity))
         {
-            if((pickablesLayerMask & (1 << hit.collider.gameObject.layer)) != 0)
+            //if((pickablesLayerMask & (1 << hit.collider.gameObject.layer)) != 0)
+            if(hit.collider.gameObject.GetComponent<Part>() is Part part && !part.IsConnected())
             {
-                //Debug.Log($"Picking: {hit.transform.name}");
-                pickedObj = hit.collider.gameObject;
-                pickedObjScreenPos = Camera.main.WorldToScreenPoint(pickedObj.transform.position);
+                pickedPart = part;
+                pickedObjScreenPos = Camera.main.WorldToScreenPoint(pickedPart.transform.position);
             }
         }
     }
@@ -41,12 +40,12 @@ public class ConstructionMode : Mode
     {
         base.OnDrag();
 
-        if (pickedObj)
+        if (pickedPart)
         {
-            dragPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pickedObjScreenPos.z));
+            dragPos = cam.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, pickedObjScreenPos.z));
             dragPos.x = Mathf.Clamp(dragPos.x, minDragLimitX, maxDragLimitX);
             dragPos.y = Mathf.Clamp(dragPos.y, minDragLimitY, maxDragLimitY);
-            pickedObj.transform.position = dragPos;
+            pickedPart.transform.position = dragPos;
 
             //Plane plane = new Plane(Vector3.up, new Vector3(0, 3, 0));
             //Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -59,23 +58,20 @@ public class ConstructionMode : Mode
     {
         base.OnClickUp();
 
-        if (pickedObj)
+        if (pickedPart)
         {
             //Socket check
-            Collider[] hitColliders = Physics.OverlapSphere(pickedObj.transform.position, maxConnectionDistance);
+            Collider[] hitColliders = Physics.OverlapSphere(pickedPart.transform.position, maxConnectionDistance);
             for (int i = 0; i < hitColliders.Length; i++)
             {
                 if (hitColliders[i].gameObject.GetComponent<Socket>() is Socket socket)
                 {
-                    if (socket.Connect(pickedObj))
-                    {
-                        pickedObj.gameObject.layer = 0;
+                    if (socket.Connect(pickedPart))
                         break;
-                    }
                 }
             }
         }  
 
-        pickedObj = null;
+        pickedPart = null;
     }
 }

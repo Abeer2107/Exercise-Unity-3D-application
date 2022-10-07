@@ -49,6 +49,9 @@ public class ModesHandler : MonoBehaviour
     {
         if (index >= 0 && index < modes.Length)
             modes[index].Deactivate();
+
+        if (activateFirstModeByDefault)
+            ActivateMode(0);
     }
 
     public void DeactivateMode(Mode mode)

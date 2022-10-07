@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 4521505275608086498}
   - component: {fileID: 6526818461508594445}
   - component: {fileID: 4057645024499110088}
-  - component: {fileID: 6526818461508594434}
+  - component: {fileID: 7780908051291179919}
   - component: {fileID: 2275799344088975670}
+  - component: {fileID: 975841361481875953}
   m_Layer: 0
   m_Name: Axle
   m_TagString: Untagged
@@ -87,8 +88,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6526818461508594434
-CapsuleCollider:
+--- !u!64 &7780908051291179919
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,10 +98,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 10
-  m_Direction: 0
-  m_Center: {x: 0, y: 0.00000022351742, z: -0.00000022351747}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5188884433204370104, guid: 8d8126090957dae40a910857e19ffa9f, type: 3}
 --- !u!54 &2275799344088975670
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -117,6 +118,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &975841361481875953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836196478893748528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868c6c05c1849d14dbad9a666114b3e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayName: Axle
+  isBasePart: 1
+  textureSize: {x: 256, y: 256}
 --- !u!1001 &981276590850538331
 PrefabInstance:
   m_ObjectHideFlags: 0

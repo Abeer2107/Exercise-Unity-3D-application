@@ -10,10 +10,16 @@ public class Mode : MonoBehaviour
     public bool IsActive { get; protected set; }
     public bool IsDragging { get; protected set; }
 
+    protected Camera cam;
     readonly float dragThreshold = 0.01f;
     private bool isDragging, passedThreshold;
     private Vector3 lastPressPos, startPressPos;
     protected Vector3 deltaPressPos;
+
+    protected virtual void Start()
+    {
+        cam = Camera.main;
+    }
 
     protected virtual void Update()
     {

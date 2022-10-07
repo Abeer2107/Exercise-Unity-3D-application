@@ -4,15 +4,16 @@ public class Socket : MonoBehaviour
 {
     public bool IsConnected { private set; get; }
 
-    private GameObject connectedPart;
+    private Part connectedPart;
 
-    public bool Connect(GameObject part)
+    public bool Connect(Part part)
     {
         if (!IsConnected)
         {
             part.transform.SetParent(transform);
             part.transform.localPosition = Vector3.zero;
             part.transform.localRotation = transform.localRotation;
+            part.SetConnected(true);
             connectedPart = part;
             IsConnected = true;
         }

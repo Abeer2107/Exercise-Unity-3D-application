@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 5894103743079676696}
   - component: {fileID: 7145367377360534786}
   - component: {fileID: 9219327546266349542}
-  - component: {fileID: 2356080670632060900}
+  - component: {fileID: 7187888727934977005}
   - component: {fileID: 6788254666327664648}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Tire_Rubber
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,8 +87,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &2356080670632060900
-SphereCollider:
+--- !u!64 &7187888727934977005
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,9 +97,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 3.2630312
-  m_Center: {x: -0.0000038146973, y: -0.35794875, z: 0.00022828585}
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7960248349459641597, guid: 8d8126090957dae40a910857e19ffa9f, type: 3}
 --- !u!114 &6788254666327664648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,3 +114,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Rubber Tire
+  isBasePart: 0
+  textureSize: {x: 1024, y: 1024}
