@@ -113,3 +113,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Plastic Tire
   isBasePart: 0
+  textureSize: {x: 512, y: 512}

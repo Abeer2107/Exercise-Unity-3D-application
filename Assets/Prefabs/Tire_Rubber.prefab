@@ -114,5 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayName: Rubber Tire
+  connectionPivot: {fileID: 0}
   isBasePart: 0
   textureSize: {x: 1024, y: 1024}

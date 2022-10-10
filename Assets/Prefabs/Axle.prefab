@@ -143,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 3072221246709903227, guid: 0307eae021513204886d29ac2c92f93a,
         type: 3}
       propertyPath: m_Name
-      value: Socket (1)
+      value: Socket (2)
       objectReference: {fileID: 0}
     - target: {fileID: 3072221246709903227, guid: 0307eae021513204886d29ac2c92f93a,
         type: 3}
@@ -223,7 +223,7 @@ PrefabInstance:
     - target: {fileID: 3072221246709903227, guid: 0307eae021513204886d29ac2c92f93a,
         type: 3}
       propertyPath: m_Name
-      value: Socket
+      value: Socket (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3072221246709903227, guid: 0307eae021513204886d29ac2c92f93a,
         type: 3}

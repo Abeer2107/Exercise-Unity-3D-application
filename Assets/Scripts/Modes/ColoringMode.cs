@@ -3,12 +3,13 @@ using UnityEngine;
 public class ColoringMode : Mode
 {
     [SerializeField] private Texture2D brushTex;
+    [SerializeField] private ColorPicker colorPicker;
 
     private Ray ray;
     private RaycastHit hit;
     private Color32[] brushPixels;
     private Texture2D tex;
-    private Color currColor;
+    private Color currColor = Color.red;
     private Part currPart;
 
     protected override void Start()
@@ -16,7 +17,12 @@ public class ColoringMode : Mode
         base.Start();
 
         brushPixels = brushTex.GetPixels32();
-        currColor = Color.blue;
+
+        if (colorPicker)
+        {
+            currColor = colorPicker.GetColor(0);
+            colorPicker.OnColorChanged.AddListener((Color newColor) => currColor = newColor);
+        }
     }
 
     protected override void OnClickDown()
@@ -46,6 +52,7 @@ public class ColoringMode : Mode
         {
             if (hit.collider.gameObject.GetComponent<Part>() is Part part)
             {
+                //Moving to a different part
                 if(part != currPart)
                 {
                     tex = null;

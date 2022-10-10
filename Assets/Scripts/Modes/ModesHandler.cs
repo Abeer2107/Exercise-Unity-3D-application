@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ModesHandler : MonoBehaviour
 {
+    public static ModesHandler Instance { get; private set; }
+
     [SerializeField] private bool activateFirstModeByDefault = true;
     [Space(20)]
     [SerializeField] private Mode[] modes;
@@ -10,6 +12,8 @@ public class ModesHandler : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
+
         if (activateFirstModeByDefault)
             ActivateMode(0);
     }

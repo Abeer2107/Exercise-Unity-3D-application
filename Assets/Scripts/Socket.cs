@@ -11,7 +11,7 @@ public class Socket : MonoBehaviour
         if (!IsConnected)
         {
             part.transform.SetParent(transform);
-            part.transform.localPosition = Vector3.zero;
+            part.transform.localPosition = Vector3.zero; //Assuming pivot is connection point
             part.transform.localRotation = transform.localRotation;
             part.SetConnected(true);
             connectedPart = part;
@@ -21,9 +21,10 @@ public class Socket : MonoBehaviour
         return IsConnected;
     }
 
-    public void UnConnect()
+    public void Disconnect()
     {
         connectedPart.transform.SetParent(null);
+        connectedPart.SetConnected(false);
         connectedPart = null;
         IsConnected = false;
     }
